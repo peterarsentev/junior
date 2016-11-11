@@ -71,13 +71,13 @@
                 <version>2.7</version>
                 <configuration>
                     <check>
-                        <branchRate>85</branchRate>
-                        <lineRate>85</lineRate>
+                        <branchRate>60</branchRate>
+                        <lineRate>60</lineRate>
                         <haltOnFailure>true</haltOnFailure>
-                        <totalBranchRate>85</totalBranchRate>
-                        <totalLineRate>85</totalLineRate>
-                        <packageLineRate>85</packageLineRate>
-                        <packageBranchRate>85</packageBranchRate>
+                        <totalBranchRate>60</totalBranchRate>
+                        <totalLineRate>60</totalLineRate>
+                        <packageLineRate>60</packageLineRate>
+                        <packageBranchRate>60</packageBranchRate>
                     </check>
                 </configuration>
                 <executions>
