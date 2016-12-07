@@ -32,7 +32,7 @@ public class MaxTest {
     @Test
     public void whenOneTwoThreeValuesThenThreeMax() {
         final int three = 3;
-        final int[] values = {1, 2, three};
+        final int[] values = {1, 2, 3};
         Max max = new Max(values);
         int result = max.max();
         assertThat(result, is(three));
