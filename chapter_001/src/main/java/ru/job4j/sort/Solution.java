@@ -19,6 +19,7 @@ class Solution {
             this.key = key;
         }
     }
+
     int solution(int[] value) {
         final Map<Integer, Pair> result = new TreeMap<>();
         for (int i = 0; i < value.length; i++) {

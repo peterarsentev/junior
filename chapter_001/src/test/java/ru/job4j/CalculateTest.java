@@ -32,4 +32,13 @@ public class CalculateTest {
                 )
         );
     }
+
+    @Test
+    public void whenTakeNameThenTreeEchoPlusName() {
+        String input = "Petr Arsentev";
+        String expect = "Echo, echo, echo : Petr Arsentev";
+        Calculate calculate = new Calculate();
+        String result = calculate.echo(input);
+        assertThat(result, is(expect));
+    }
 }

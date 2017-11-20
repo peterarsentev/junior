@@ -23,7 +23,7 @@ public class MaxTest {
         final int four = 4;
         Max max = new Max(new int[] {});
         int result  = max.max(three, four);
-        assertThat(result, is(four));
+        assertThat(result, is(4));
     }
 
     /**
