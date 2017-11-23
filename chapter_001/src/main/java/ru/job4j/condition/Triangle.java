@@ -69,7 +69,7 @@ public class Triangle {
         double bc = this.distance(this.b, this.c);
         if (this.exist(ab, ac, bc)) {
             // написать формулу для расчета площади треугольника.
-            //rsl = ...
+            rsl = -1;
         }
         return rsl;
     }

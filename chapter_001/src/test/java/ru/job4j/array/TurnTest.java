@@ -14,10 +14,6 @@ public class TurnTest {
                 ),
                 is(new int[] {5, 4, 3, 2, 1})
         );
-
-        int[] expected = {2, 1, 3};
-        Integer[] result = {3, 1, 2};
-        assertThat(result, arrayContainingInAnyOrder(expected));
     }
 
     @Test

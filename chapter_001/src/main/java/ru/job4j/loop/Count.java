@@ -8,17 +8,16 @@ package ru.job4j.loop;
  * @since 0.1
  */
 public class Count {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
     }
 
     public int add(int start, int finish) {
         int i, sum = 0;
-        for (i = start; i <=finish; i++){
+        for (i = start; i <= finish; i++) {
             if (i % 2 == 0) {
                 sum = sum + i;
             }
         }
         return sum;
     }
-
 }

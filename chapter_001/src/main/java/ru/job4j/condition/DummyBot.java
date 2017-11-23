@@ -1,5 +1,6 @@
 package ru.job4j.condition;
 
+
 /**
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$

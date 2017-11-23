@@ -13,7 +13,6 @@ import java.util.List;
  * @since 0.1
  */
 public class TreeNode {
-
     public static class Node {
         List<Node> children;
         int value;
@@ -25,9 +24,7 @@ public class TreeNode {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "value=" + value +
-                    '}';
+            return "Node{" + "value=" + value + '}';
         }
     }
 
