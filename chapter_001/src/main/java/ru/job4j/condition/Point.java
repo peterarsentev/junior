@@ -14,21 +14,27 @@ public class Point {
         this.y = y;
     }
 
-    public double distanceTo(Point that) {
-        // Точка А - это текущая точка. К ней мы обращаемся через оператор this.
-        Point a = this;
-        // Точка В - это входящая точка. К ней мы можем обратиться напрямую через имя переменной that.
-        // или для удоства мы создали новую переменню b и к ней присвоили переменную this.
-        Point b = that;
+//    public double distanceTo(Point that) {
+//        // Точка А - это текущая точка. К ней мы обращаемся через оператор this.
+//        Point a = this;
+//        // Точка В - это входящая точка. К ней мы можем обратиться напрямую через имя переменной that.
+//        // или для удоства мы создали новую переменню b и к ней присвоили переменную this.
+//        Point b = that;
+//
+//        int x1 = a.x;
+//        int y1 = a.y;
+//        int x2 = b.x;
+//        int y2 = b.y;
+//        double result = Math.sqrt(
+//                Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
+//        );
+//        return result;
+//    }
 
-        int x1 = a.x;
-        int y1 = a.y;
-        int x2 = b.x;
-        int y2 = b.y;
-        double result = Math.sqrt(
-                Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)
+    public double distanceTo(Point that) {
+        return Math.sqrt(
+                Math.pow(this.x - that.x, 2) + Math.pow(this.y - that.y, 2)
         );
-        return result;
     }
 
     public static void main(String[] args) {
