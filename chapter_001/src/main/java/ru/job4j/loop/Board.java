@@ -10,16 +10,14 @@ public class Board {
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
-        for ( ) {
-            for ( ) {
-                // условие проверки, что писать пробел или X
-                if () {
+        for (int out = 0; out != width; out++) {
+            for (int in = 0; in != height; in++) {
+                if ((out + in) % 2 == 0) {
                     screen.append("X");
                 } else {
                     screen.append(" ");
                 }
             }
-            // добавляем перевод на новую строку.
             screen.append(ln);
         }
         return screen.toString();

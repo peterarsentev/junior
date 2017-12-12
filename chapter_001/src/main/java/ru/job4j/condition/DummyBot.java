@@ -13,11 +13,11 @@ public class DummyBot {
      */
     public String answer(String question) {
         String rsl = "Это ставит меня в тупик. Спросите другой вопрос.";
-        if ("Привет, Бот".equals(question)) {
-            rsl = ...;
-        } else if (....) {
-            rsl = ..;
-        }
+//        if ("Привет, Бот".equals(question)) {
+//            rsl = ...;
+//        } else if (....) {
+//            rsl = ..;
+//        }
         return rsl;
     }
 }
