@@ -12,8 +12,7 @@ services:
 before_script:
 - psql -c 'create database tracker;' -U postgres
 
-script:
-- mvn -Ptravis
+script: "mvn clean install -Ptravis"
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
