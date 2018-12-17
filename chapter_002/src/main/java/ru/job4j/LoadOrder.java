@@ -2,7 +2,7 @@ package ru.job4j;
 
 public class LoadOrder {
 
-    private static String static_field = echo("static field");
+    private static String staticField = echo("static field");
 
     private static final String STATIC_FINAL_FIELD = echo("static final field");
 

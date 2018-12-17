@@ -8,7 +8,8 @@ package ru.job4j;
  * @since 0.1
  */
 public class Parent {
-    private class Child {}
+    private class Child {
+    }
 
     public Child createChild() {
         return new Child();

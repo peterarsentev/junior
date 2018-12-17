@@ -32,7 +32,7 @@ public class TrackerSQLTest {
     public void createItem() throws SQLException {
         try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
             tracker.add(new Item("name", "desc"));
-            assertThat(tracker.findByName("name").size(), is(1));
+            assertThat(tracker.findByName("name").length, is(1));
         }
     }
 }

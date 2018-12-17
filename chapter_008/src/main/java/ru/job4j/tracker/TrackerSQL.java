@@ -42,12 +42,12 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     }
 
     @Override
-    public List<Item> findAll() {
+    public Item[] findAll() {
         return null;
     }
 
     @Override
-    public List<Item> findByName(String key) {
+    public Item[] findByName(String key) {
        List<Item> items = new ArrayList<>();
         try (final PreparedStatement statement = this.connection
                 .prepareStatement("select * from items")) {
@@ -59,7 +59,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return items;
+        return items.toArray(new Item[0]);
     }
 
     @Override
