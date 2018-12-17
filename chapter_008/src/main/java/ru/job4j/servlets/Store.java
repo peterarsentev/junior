@@ -1,11 +1,11 @@
 package ru.job4j.servlets;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public interface Store {
+import java.util.List;
+
+public interface Store<T> {
+    T add(T model);
+    void update(T model);
+    String delete(String id);
+    List<T> findAll();
+    String findById(String id);
 }

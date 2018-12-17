@@ -1,10 +1,6 @@
 package ru.job4j.tracker;
 
-/**
- * @version $Id$
- * @since 0.1
- */
-public class Tracker {
+public class Tracker implements ITracker {
     /**
      * Массив для хранение заявок.
      */
@@ -23,6 +19,31 @@ public class Tracker {
         item.setId(this.generateId());
         this.items[this.position++] = item;
         return item;
+    }
+
+    @Override
+    public void replace(String id, Item item) {
+
+    }
+
+    @Override
+    public void delete(String id) {
+
+    }
+
+    @Override
+    public Item[] findAll() {
+        return new Item[0];
+    }
+
+    @Override
+    public Item[] findByName(String key) {
+        return new Item[0];
+    }
+
+    @Override
+    public Item findById(String id) {
+        return null;
     }
 
     /**

@@ -6,7 +6,15 @@ package ru.job4j.condition;
  * @since 0.1
  */
 public class Point {
+
+    /**
+     * Contains X coordinate.
+     */
     private int x;
+
+    /**
+     * Contains Y coordinate.
+     */
     private int y;
 
     public Point(int x, int y) {

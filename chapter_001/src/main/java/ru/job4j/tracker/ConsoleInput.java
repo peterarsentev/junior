@@ -12,4 +12,9 @@ public class ConsoleInput implements Input {
     public String ask(String question) {
         return null;
     }
+
+    @Override
+    public int ask(String question, int[] range) throws MenuOutException {
+        return Integer.valueOf(this.ask(question));
+    }
 }

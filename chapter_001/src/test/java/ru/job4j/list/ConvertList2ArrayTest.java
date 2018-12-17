@@ -5,19 +5,12 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public class ConvertListTest {
+public class ConvertList2ArrayTest {
     @Test
     public void when7ElementsThen9() {
-        ConvertMatrix2List list = new ConvertMatrix2List();
+        ConvertList2Array list = new ConvertList2Array();
         int[][] result = list.toArray(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7),
                 3
@@ -25,7 +18,7 @@ public class ConvertListTest {
         int[][] expect = {
                 {1, 2, 3},
                 {4, 5, 6},
-                {7, 0 ,0}
+                {7, 0, 0}
         };
         assertThat(result, is(expect));
     }

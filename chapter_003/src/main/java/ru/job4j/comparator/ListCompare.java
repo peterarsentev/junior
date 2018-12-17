@@ -1,11 +1,11 @@
 package ru.job4j.comparator;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public class ListCompare {
+import java.util.Comparator;
+import java.util.List;
+
+public class ListCompare implements Comparator<List<Integer>> {
+    @Override
+    public int compare(List<Integer> left, List<Integer> right) {
+        return 0;
+    }
 }

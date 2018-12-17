@@ -1,11 +1,9 @@
 package ru.job4j.array;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
 public class Square {
+    public int[] calculate(int bound) {
+        int[] rst = new int[bound];
+        // заполнить массив через цикл элементами от 1 до bound возведенными в квадрат
+        return rst;
+    }
 }

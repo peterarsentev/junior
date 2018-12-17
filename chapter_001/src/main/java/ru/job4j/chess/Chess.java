@@ -1,120 +1,90 @@
-package ru.job4j.tictactoe;
+package ru.job4j.chess;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import ru.job4j.chess.firuges.Cell;
+import ru.job4j.chess.firuges.Figure;
+import ru.job4j.chess.firuges.PawnBlack;
+import ru.job4j.chess.firuges.PawnWhite;
 
-public class TicTacToe extends Application {
-    private static final String JOB4J = "Крестики-нолики www.job4j.ru";
-    private final int size = 3;
-    private final Figure3T[][] cells = new Figure3T[size][size];
-    private final Logic3T logic = new Logic3T(cells);
+public class Chess extends Application {
+    private static final String JOB4J = "Шахматы на www.job4j.ru";
+    private final int size = 8;
+    private final Figure[] figures = new Figure[32];
+    private final Logic logic = new Logic(this.figures);
+    private int index = 0;
 
-    private Figure3T buildRectangle(int x, int y, int size) {
-        Figure3T rect = new Figure3T();
+    private Rectangle buildRectangle(int x, int y, int size, boolean white) {
+        Rectangle rect = new Rectangle();
         rect.setX(x * size);
         rect.setY(y * size);
         rect.setHeight(size);
         rect.setWidth(size);
-        rect.setFill(Color.WHITE);
+        if (white) {
+            rect.setFill(Color.WHITE);
+        } else {
+            rect.setFill(Color.GRAY);
+        }
         rect.setStroke(Color.BLACK);
         return rect;
     }
 
-    private Group buildMarkO(double x, double y, int size) {
-        Group group = new Group();
-        int radius = size / 2;
-        Circle circle = new Circle(x + radius, y + radius, radius - 10);
-        circle.setStroke(Color.BLACK);
-        circle.setFill(Color.WHITE);
-        group.getChildren().add(circle);
-        return group;
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(JOB4J);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    private boolean checkState() {
-        boolean gap = this.logic.hasGap();
-        if (!gap) {
-            this.showAlert("Все поля запонены! Начните новую Игру!");
-        }
-        return gap;
-    }
-
-    private void checkWinner() {
-        if (this.logic.isWinnerX()) {
-            this.showAlert("Победили Крестики! Начните новую Игру!");
-        } else if (this.logic.isWinnerO()) {
-            this.showAlert("Победили Нолики! Начните новую Игру!");
-        }
-    }
-
-    private Group buildMarkX(double x, double y, int size) {
-        Group group = new Group();
-        group.getChildren().addAll(
-                new Line(
-                        x + 10, y  + 10,
-                        x + size - 10, y + size - 10
-                ),
-                new Line(
-                        x + size - 10, y + 10,
-                        x + 10, y + size - 10
-                )
-        );
-        return group;
-    }
-
-    private EventHandler<MouseEvent> buildMouseEvent(Group panel) {
-        return event -> {
-            Figure3T rect = (Figure3T) event.getTarget();
-            if (this.checkState()) {
-                if (event.getButton() == MouseButton.PRIMARY) {
-                    rect.take(true);
-                    panel.getChildren().add(
-                            this.buildMarkX(rect.getX(), rect.getY(), 50)
-                    );
-                } else {
-                    rect.take(false);
-                    panel.getChildren().add(
-                            this.buildMarkO(rect.getX(), rect.getY(), 50)
-                    );
+    private Rectangle buildFigure(int x, int y, int size, String image) {
+        Rectangle rect = new Rectangle();
+        rect.setX(x);
+        rect.setY(y);
+        rect.setHeight(size);
+        rect.setWidth(size);
+        Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
+        rect.setFill(new ImagePattern(img));
+        final Rectangle momento = new Rectangle(x, y);
+        rect.setOnDragDetected(
+                event -> {
+                    momento.setX(event.getX());
+                    momento.setY(event.getY());
                 }
-                this.checkState();
-            }
-        };
+        );
+        rect.setOnMouseDragged(
+                event -> {
+                    rect.setX(event.getX() - size / 2);
+                    rect.setY(event.getY() - size / 2);
+                }
+        );
+        rect.setOnMouseReleased(
+                event -> {
+                    if (logic.move(this.findBy(momento.getX(), momento.getY()), this.findBy(event.getX(), event.getY()))) {
+                        rect.setX(((int) event.getX() / 40) * 40 + 5);
+                        rect.setY(((int) event.getY() / 40) * 40 + 5);
+                    } else {
+                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
+                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
+                    }
+                }
+        );
+        return rect;
     }
 
     private Group buildGrid() {
         Group panel = new Group();
         for (int y = 0; y != this.size; y++) {
             for (int x = 0; x != this.size; x++) {
-                Figure3T rect = this.buildRectangle(x, y, 50);
-                this.cells[y][x] = rect;
-                panel.getChildren().add(rect);
-                rect.setOnMouseClicked(this.buildMouseEvent(panel));
+                panel.getChildren().add(
+                        this.buildRectangle(x, y, 40, (x + y) % 2 == 0)
+                );
             }
         }
         return panel;
     }
-
 
     @Override
     public void start(Stage stage) {
@@ -125,14 +95,56 @@ public class TicTacToe extends Application {
         control.setAlignment(Pos.BASELINE_CENTER);
         Button start = new Button("Начать");
         start.setOnMouseClicked(
-                event -> border.setCenter(this.buildGrid())
+                event -> this.refresh(border)
         );
         control.getChildren().addAll(start);
         border.setBottom(control);
         border.setCenter(this.buildGrid());
-        stage.setScene(new Scene(border, 300, 300));
+        stage.setScene(new Scene(border, 400, 400));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
         stage.show();
+        this.refresh(border);
+    }
+
+    private void refresh(final BorderPane border) {
+        Group grid = this.buildGrid();
+        border.setCenter(grid);
+        this.buildWhiteTeam(grid);
+        this.buildBlackTeam(grid);
+    }
+
+    public void buildBlackTeam(Group grid) {
+        this.add(new PawnBlack(Cell.D7), grid);
+    }
+
+    public void buildWhiteTeam(Group grid) {
+       this.add(new PawnWhite(Cell.D2), grid);
+    }
+
+    public void add(Figure figure, Group grid) {
+        this.figures[this.index++] = figure;
+        Cell position = figure.position();
+        grid.getChildren().add(
+                this.buildFigure(
+                        position.x * 40 + 5,
+                        position.y * 40 + 5,
+                        30,
+                        figure.icon()
+                )
+        );
+    }
+
+    private Cell findBy(double graphX, double graphY) {
+        Cell rst = Cell.A1;
+        int x = (int) graphX / 40;
+        int y = (int) graphY / 40;
+        for (Cell cell : Cell.values()) {
+            if (cell.x == x && cell.y == y) {
+                rst = cell;
+                break;
+            }
+        }
+        return rst;
     }
 }

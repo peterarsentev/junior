@@ -1,20 +1,24 @@
 package ru.job4j;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public class Calculator {
-    private final Operation add = (left, right) -> left + right;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-    public double summation(int left, int right) {
-        return this.add.calc(left, right);
+public class Calculator {
+
+    public void multiple(int start, int finish, int value,
+                         BiFunction<Integer, Integer, Double> op,
+                         Consumer<Double> media) {
+        for (int index = start; index != finish; index++) {
+            media.accept(op.apply(value, index));
+        }
     }
 
-    public interface Operation {
-        double calc(int left, int right);
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        calc.multiple(
+                0, 10, 2,
+                MathUtil::add,
+                result -> System.out.println(result)
+        );
     }
 }

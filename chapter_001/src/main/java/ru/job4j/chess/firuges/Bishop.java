@@ -1,11 +1,25 @@
 package ru.job4j.chess.firuges;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public class Bishop {
+public class Bishop implements Figure {
+    @Override
+    public Cell position() {
+        return null;
+    }
+
+    @Override
+    public Cell[] way(Cell source, Cell dest) {
+        return new Cell[] {
+                dest
+        };
+    }
+
+    @Override
+    public String icon() {
+        return null;
+    }
+
+    @Override
+    public Figure copy(Cell dest) {
+        return null;
+    }
 }

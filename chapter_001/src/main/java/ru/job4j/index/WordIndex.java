@@ -1,11 +1,16 @@
 package ru.job4j.index;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
-public class WordIndex {
+import java.util.Collections;
+import java.util.Set;
+
+public final class WordIndex {
+    private final String text;
+
+    public WordIndex(final String text) {
+        this.text = text;
+    }
+
+    public final Set<Integer> indexOf(final String word) {
+        return Collections.emptySet();
+    }
 }

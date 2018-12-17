@@ -7,10 +7,10 @@ package ru.job4j.chess.firuges;
  * @version $Id$
  * @since 0.1
  */
-public class Pawn implements Figure {
+public class PawnWhite implements Figure {
     private final Cell position;
 
-    public Pawn(final Cell position) {
+    public PawnWhite(final Cell position) {
         this.position = position;
     }
 
@@ -21,11 +21,18 @@ public class Pawn implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] { dest };
+        return new Cell[] {
+                dest
+        };
     }
 
     @Override
     public String icon() {
         return "PawnWhite.png";
+    }
+
+    @Override
+    public Figure copy(Cell dest) {
+        return new PawnWhite(dest);
     }
 }

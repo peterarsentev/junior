@@ -1,11 +1,25 @@
 package ru.job4j.calculator;
 
 /**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
+ * Корвертор валюты.
  */
 public class Converter {
+
+    /**
+     * Конвертируем рубли в евро.
+     * @param value рубли.
+     * @return Евро.
+     */
+    public int rubleToEuro(int value) {
+        return -1;
+    }
+
+    /**
+     * Конвертируем рубли в доллары.
+     * @param value рубли.
+     * @return Доллоры
+     */
+    public int rubleToDollar(int value) {
+        return -1;
+    }
 }

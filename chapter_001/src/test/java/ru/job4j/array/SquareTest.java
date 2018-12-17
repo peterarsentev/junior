@@ -1,12 +1,16 @@
-import static org.junit.Assert.*;
+package ru.job4j.array;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
+import org.junit.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class SquareTest {
-
+    @Test
+    public void whenBound3Then014() {
+        int bound = 3;
+        Square square = new Square();
+        int[] rst = square.calculate(bound);
+        int[] expect = new int[] {0, 1, 4};
+        assertThat(rst, is(expect));
+    }
 }
