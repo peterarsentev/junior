@@ -6,7 +6,7 @@ jdk:
 services:
 - postgresql
 
-before_script:
+before_install:
 - psql -c 'create database tracker;' -U postgres
 
 
