@@ -6,9 +6,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class Stylizer {
-    public static void main(String[] args) throws TransformerException {
+    public static void main(String[] args) throws Exception {
         String xsl = "";
         String xml = "";
         TransformerFactory factory = TransformerFactory.newInstance();

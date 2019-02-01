@@ -1,10 +1,12 @@
 package ru.job4j.it;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import java.util.NoSuchElementException;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+@Ignore
 public class EvenItTest {
 
     @Test(expected = NoSuchElementException.class)

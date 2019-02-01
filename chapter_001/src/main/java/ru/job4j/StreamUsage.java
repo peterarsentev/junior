@@ -1,6 +1,7 @@
 package ru.job4j;
 
 import javax.sound.midi.Soundbank;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,19 +17,14 @@ public class StreamUsage {
     }
 
     public static void main(String[] args) {
-        System.out.println(1.0 == 1);
-        List<Task> tasks = null;
-        List<Task> bugs = tasks.stream().filter(
-                task -> task.name.contains("Bug")
-        ).collect(Collectors.toList());
-        bugs.forEach(System.out::println);
-
-        List<String> names = tasks.stream().map(
-                task -> task.name
-        ).collect(Collectors.toList());
-
-        long total = tasks.stream().map(
-                task -> task.spent
-        ).reduce(0L, Long::sum);
+        List<Task> tasks = List.of(
+                new Task("Bug #1", 100),
+                new Task("Task #2", 100),
+                new Task("Bug #3", 100)
+        );
+        long total = 0L;
+        for (Task task : tasks) {
+           total += task.spent;
+        }
     }
 }

@@ -14,23 +14,23 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.reflect.Whitebox;
 
-@Ignore
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ValidateService.class)
 public class UserServletTest {
 
     @Test
     public void whenAddUserThenStoreIt() throws ServletException, IOException {
-        Validate validate = new ValidateStub();
-        PowerMockito.mockStatic(ValidateService.class);
-        Mockito.when(ValidateService.getInstance()).thenReturn(validate);
+        Validate validate = mock(ValidateService.class);
+        Whitebox.setInternalState(ValidateService.class, "INSTANCE", validate);
         HttpServletRequest req = mock(HttpServletRequest.class);
         HttpServletResponse resp = mock(HttpServletResponse.class);
         when(req.getParameter("name")).thenReturn("Petr Arsentev");
         new UserServlet().doPost(req, resp);
-        assertThat(validate.getAll().iterator().next().getName(), is("Petr Arsentev"));
+        verify(validate).add(new User(0, "Petr Arsentev"));
     }
 }

@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ValidateStub implements Validate {
+public enum ValidateStub implements Validate {
+    INSTANCE;
+
     private final Map<Integer, User> store = new HashMap<>();
     private int ids = 0;
 

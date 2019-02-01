@@ -9,16 +9,8 @@ import java.util.List;
  * @version $Id$
  * @since 0.1
  */
-public class ValidateService implements Validate {
-
-    private static final Validate INST = new ValidateService();
-
-    private ValidateService() {
-    }
-
-    public static Validate getInstance() {
-        return INST;
-    }
+public enum ValidateService implements Validate {
+    INSTANCE;
 
     @Override
     public User add(User user) {

@@ -1,5 +1,6 @@
 package ru.job4j.index;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,6 +8,7 @@ import java.util.TreeSet;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+@Ignore
 public class WordIndexTest {
     @Test(timeout = 10000L)
     public void whenSingleWord() {
