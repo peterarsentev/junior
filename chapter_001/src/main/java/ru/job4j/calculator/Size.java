@@ -2,7 +2,7 @@ package ru.job4j.calculator;
 
 public class Size {
     public int add(int left, int right) {
-        int result = left + right;
+        int result = left + Math.abs(right);
         return result;
     }
 

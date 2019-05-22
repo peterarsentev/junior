@@ -8,6 +8,8 @@ package ru.job4j.tracker;
  * @since 0.1
  */
 public interface Input {
+    String LOG = "LOG";
+
     String ask(String question);
 
     int ask(String question, int[] range) throws MenuOutException;

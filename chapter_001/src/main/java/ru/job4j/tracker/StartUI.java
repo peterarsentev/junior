@@ -60,9 +60,9 @@ public class StartUI {
         System.out.println("------------ Добавление новой языки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите имя заявки :");
-        Item item = new Item(name, desc);
-        this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+//        Item item = new Item(name, desc);
+//        this.tracker.add(item);
+//        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 
     private void showMenu() {

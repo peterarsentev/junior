@@ -20,6 +20,6 @@ class AddItem extends BaseAction {
     public void execute(Input input, Tracker tracker) {
         String name = input.ask("Enter name:");
         String desc = input.ask("Enter description:");
-        tracker.add(new Item(name, desc));
+//        tracker.add(new Item(name, desc));
     }
 }
