@@ -18,7 +18,7 @@ public class SocketMenu {
     /**
      * field assembly get class which set/get out and input  streams to socket.
      */
-    private final Assembly assembly = new Assembling();
+    private final Assembly assembly = new Assembling(System.lineSeparator());
     /**
      * field storage answers server.
      */

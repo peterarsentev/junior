@@ -14,6 +14,7 @@ import java.util.Objects;
  * @since 4/15/2019
  */
 public class Assembling implements Assembly {
+    private final String ln;
     /**
      * field reader.
      */
@@ -23,6 +24,9 @@ public class Assembling implements Assembly {
      */
     private DataOutputStream writer;
 
+    public Assembling(String ln) {
+        this.ln = ln;
+    }
 
     @Override
     public final void setOutWriter(final Socket socket) throws IOException {
@@ -39,11 +43,10 @@ public class Assembling implements Assembly {
 
     @Override
     public final String inputLine() throws IOException {
-        final String ln = System.lineSeparator();
         StringBuilder sb = new StringBuilder();
         while (this.reader.available() > 0) {
             if (sb.toString().endsWith(ln)) {
-                sb.replace(sb.length() - 2, sb.length(), "");
+                sb.replace(sb.length() - ln.length(), sb.length(), "");
                 break;
             }
             final var read = this.reader.read();
