@@ -22,8 +22,9 @@ import static org.mockito.Mockito.when;
 
 public class SocketServerTest {
     public static final String LN = System.getProperty("line.separator");
-    Socket socket = mock(Socket.class);
-    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    private final Socket socket = mock(Socket.class);
+    private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    private final PrintStream sysout = System.out;
 
     @Before
     public void before() {
@@ -33,7 +34,7 @@ public class SocketServerTest {
     @After
     public void close() throws IOException {
         bos.close();
-        System.setOut(System.out);
+        System.setOut(sysout);
         socket.close();
     }
 
@@ -49,6 +50,7 @@ public class SocketServerTest {
         while (dis.available() > 0) {
             sb.append(dis.readUTF());
         }
+        sysout.println(bos);
         assertThat(sb.toString(), is(expected));
         dis.close();
         in.close();

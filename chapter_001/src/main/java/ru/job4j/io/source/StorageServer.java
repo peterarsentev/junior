@@ -23,6 +23,7 @@ public class StorageServer {
      * @return answer from storage server
      */
     public final String getDataStorage(final String ask) {
+        System.out.println(ask);
         return storage.getOrDefault(ask, "I don't understand.");
     }
 

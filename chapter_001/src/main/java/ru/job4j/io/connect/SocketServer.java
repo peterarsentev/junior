@@ -37,13 +37,13 @@ public class SocketServer {
         menu.setOut(this.socket);
         menu.setIn(this.socket);
         String client;
-        String data;
         do {
             menu.print("wait command...");
             client = menu.in();
+            System.out.println(client);
             menu.print("Shadow: " + client);
             if (!("exit".equals(client))) {
-                data = menu.getAnswerServer(client);
+                String data = menu.getAnswerServer(client);
                 menu.out(data);
                 menu.print("Oracle: " + data);
             }
