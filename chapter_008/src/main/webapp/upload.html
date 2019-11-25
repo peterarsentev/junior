@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Upload image</h2>
+   <div>
+        <div class="checkbox">
+            <input type="file" id="photo">
+        </div>
+        <button type="button" class="btn btn-default" onclick="upload(); return false;">Submit</button>
+    </div>
+</div>
+<script>
+    function upload() {
+        var form = new FormData();
+        form.append('file', $('#photo')[0].files[0]);
+        jQuery.ajax({
+            url: 'http://localhost:8080/items/upload',
+            type: "POST",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+               alert("File uploaded");
+            }
+        });
+    }
+</script>
+</body>
+</html>

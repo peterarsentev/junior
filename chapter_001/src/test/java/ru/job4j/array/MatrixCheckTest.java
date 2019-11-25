@@ -9,25 +9,27 @@ import static org.junit.Assert.assertThat;
 public class MatrixCheckTest {
     @Test
     public void whenDataMonoByTrueThenTrue() {
-        MatrixCheck check = new MatrixCheck();
-        boolean[][] input = new boolean[][] {
-                {true, true, false},
-                {false, true, true},
-                {true, false, true}
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = check.mono(input);
+        boolean result = MatrixCheck.isWin(input);
         assertThat(result, is(true));
     }
 
     @Test
     public void whenDataNotMonoByTrueThenFalse() {
-        MatrixCheck check = new MatrixCheck();
-        boolean[][] input = new boolean[][] {
-                {true, true, false},
-                {false, false, true},
-                {true, false, true}
+        char[][] input = {
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
+                {' ', ' ', 'X', ' ', ' '},
         };
-        boolean result = check.mono(input);
+        boolean result = MatrixCheck.isWin(input);
         assertThat(result, is(false));
     }
 }

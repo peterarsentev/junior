@@ -13,6 +13,7 @@ public class CompareVariable {
         boolean lessEq = left <= right;
         boolean greatEq = left >= right;
         boolean eq = left == right;
+
         System.out.println("Left is less then right. " + less);
         System.out.println("Left is great then right. " + great);
         System.out.println("Left is less or equal then right. " + lessEq);

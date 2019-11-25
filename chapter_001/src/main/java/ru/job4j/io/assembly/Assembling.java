@@ -57,7 +57,6 @@ public class Assembling implements Assembly {
             }
         }
         return sb.toString().trim();
-
     }
 
     @Override

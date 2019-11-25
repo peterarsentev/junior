@@ -10,8 +10,8 @@ public class Converter {
      * @param value рубли.
      * @return Евро.
      */
-    public int rubleToEuro(int value) {
-        return -1;
+    public static int rubleToEuro(int value) {
+        return value / 70;
     }
 
     /**
@@ -19,7 +19,15 @@ public class Converter {
      * @param value рубли.
      * @return Доллары
      */
-    public int rubleToDollar(int value) {
+    public static int rubleToDollar(int value) {
         return -1;
+    }
+
+    public static void main(String[] args) {
+        int in = 140;
+        int expected = 2;
+        int out = rubleToEuro(in);
+        boolean passed = expected == out;
+        System.out.println("140 rubles are 2. Test result : " + passed);
     }
 }

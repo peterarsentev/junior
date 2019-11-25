@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Count {
     private int value;
 
-    public synchronized void increment() {
+    public void increment() {
         this.value++;
     }
 

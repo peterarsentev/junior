@@ -1,25 +1,20 @@
 package ru.job4j.loop;
 
-/**
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
 public class Board {
-    public String paint(int width, int height) {
-        StringBuilder screen = new StringBuilder();
-        String ln = System.lineSeparator();
-        for (int out = 0; out != width; out++) {
-            for (int in = 0; in != height; in++) {
-                if ((out + in) % 2 == 0) {
-                    screen.append("X");
-                } else {
-                    screen.append(" ");
-                }
+    public static void paint(int width, int height) {
+        for (int row = 0; row < height; row++) {
+            for (int cell = 0; cell < width; cell++) {
+                //печатаем X - width раз.
+                System.out.print("X");
             }
-            screen.append(ln);
+            // добавляем перевод на новую строку.
+            System.out.println();
         }
-        return screen.toString();
+    }
+
+    public static void main(String[] args) {
+        paint(3, 3);
+        System.out.println();
+        paint(4, 4);
     }
 }

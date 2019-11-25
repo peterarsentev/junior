@@ -2,6 +2,10 @@ package ru.job4j.calculate;
 
 public class Calculate {
 
+    /**
+     * Собираем объект Calculate.
+     * @param args args.
+     */
     public static void main(String[] args) {
         Calculate calc = new Calculate();
         String result = calc.echo("petr");
