@@ -33,4 +33,18 @@ public class SkipNegativeTest {
         int[][] rsl = SkipNegative.skip(in);
         assertThat(rsl, is(expect));
     }
+
+    @Test
+    public void whenAllNegative() {
+        int[][] in = {
+                {-1, -3},
+                {-1, -2}
+        };
+        int[][] expect = {
+                {0, 0},
+                {0, 0}
+        };
+        int[][] rsl = SkipNegative.skip(in);
+        assertThat(rsl, is(expect));
+    }
 }
