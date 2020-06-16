@@ -10,6 +10,8 @@ public class Calculate {
         Calculate calc = new Calculate();
         String result = calc.echo("petr");
         System.out.println(result);
+        if (result != null)
+            System.out.println("text");
     }
 
     public String echo(String name) {

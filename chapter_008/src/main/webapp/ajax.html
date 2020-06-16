@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>AJAX</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+
+<script>
+    function sendGreeting() {
+        console.debug("load");
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/items/greet',
+            data: 'name=' + $('#exampleInputEmail1').val(),
+            dataType: 'text'
+        }).done(function(data) {
+            alert(data);
+        }).fail(function(err){
+            alert(err);
+        });
+    }
+</script>
+
+<div class="container">
+    <form>
+        <h4>
+            Текст
+        </h4>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="sendGreeting()">Submit</button>
+    </form>
+</div>
+</body>
+</html>

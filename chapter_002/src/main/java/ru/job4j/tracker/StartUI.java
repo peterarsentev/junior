@@ -2,15 +2,6 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    public static void replaceItem(Input input, Tracker tracker) {
-        System.out.println(" === Update item ====");
-        String id = input.askStr("Enter id:");
-        String name = input.askStr("Enter a new name of item: ");
-        Item item = new Item(name);
-        item.setId(id);
-        tracker.replace(id, item);
-    }
-
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
@@ -21,6 +12,15 @@ public class StartUI {
         }
     }
 
+    public static void replaceItem(Input input, Tracker tracker) {
+        System.out.println(" === Update item ====");
+        String id = input.askStr("Enter id:");
+        String name = input.askStr("Enter a new name of item: ");
+        Item item = new Item(name);
+        item.setId(id);
+        tracker.replace(id, item);
+    }
+
     private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
@@ -29,7 +29,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input validate = new ValidateInput();
+        Input validate = new ValidateInput(null);
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction()

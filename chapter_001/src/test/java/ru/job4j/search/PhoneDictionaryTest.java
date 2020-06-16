@@ -1,12 +1,11 @@
 package ru.job4j.search;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import java.util.List;
+
+import java.util.ArrayList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-@Ignore
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
@@ -14,7 +13,7 @@ public class PhoneDictionaryTest {
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        List<Person> persons = phones.find("Petr");
-        assertThat(persons.iterator().next().getSurname(), is("Arsentev"));
+        ArrayList<Person> persons = phones.find("Petr");
+        assertThat(persons.get(0).getSurname(), is("Arsentev"));
     }
 }

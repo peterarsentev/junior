@@ -11,6 +11,7 @@ public class Fit {
      * @return идеальный вес.
      */
     public static double manWeight(double height) {
+        double rsl = -1;
         return -1D;
     }
 

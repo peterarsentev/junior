@@ -3,20 +3,11 @@ package ru.job4j.tracker;
 import java.util.Random;
 
 public class Tracker implements ITracker {
-    /**
-     * Массив для хранение заявок.
-     */
+
     private final Item[] items = new Item[100];
 
-    /**
-     * Указатель ячейки для новой заявки.
-     */
     private int position = 0;
 
-    /**
-     * Метод реализаущий добавление заявки в хранилище
-     * @param item новая заявка
-     */
     public Item add(Item item) {
         item.setId(this.generateId());
         this.items[this.position++] = item;
@@ -24,31 +15,23 @@ public class Tracker implements ITracker {
     }
 
     @Override
-    public void replace(String id, Item item) {
-
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+        boolean rsl = index != -1;
+        if (rsl) {
+            items[index] = item;
+        }
+        return rsl;
     }
 
     @Override
     public void delete(String id) {
-
+        items[indexOf(id)] = null;
     }
 
     @Override
     public Item[] findAll() {
-        //   получение списка всех заявок - возвращает копию массива this.items без null элементов;
-        Item[] notNullitems = new Item[position];
-
-        int size=0;
-
-        for (Item i: this.items) {
-            Item tmp = i;
-            if(tmp!=null) {
-                notNullitems[size++]=tmp;
-            }
-        }
-        Item [] notNullitemsCut = new Item[size];
-        System.arraycopy(notNullitems,0,notNullitemsCut,0,size);
-        return notNullitemsCut;
+        return items;
     }
 
     @Override
@@ -56,16 +39,23 @@ public class Tracker implements ITracker {
         return new Item[0];
     }
 
-    @Override
-    public Item findById(String id) {
-        return null;
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
     }
 
-    /**
-     * Метод генерирует уникальный ключ для задаявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-     * @return Уникальный ключ.
-     */
+
+    @Override
+    public Item findById(String id) {
+        return items[indexOf(id)];
+    }
+
     private String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
@@ -74,8 +64,7 @@ public class Tracker implements ITracker {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         Item item = new Item("Bug 1");
-        System.out.println(item.getId()); // here will be null,
-        Item saved = tracker.add(item);
-        System.out.println(saved.getId()); // where will be not null.
+        item.setId("34");
+        tracker.replace("34", item);
     }
 }

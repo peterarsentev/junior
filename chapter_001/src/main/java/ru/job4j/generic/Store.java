@@ -1,10 +1,5 @@
 package ru.job4j.generic;
 
-/**
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
 public interface Store<T extends Base> {
 
     void add(T model);

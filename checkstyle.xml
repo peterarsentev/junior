@@ -6,7 +6,7 @@
 <module name="Checker">
 
     <!--Расширение файла должно быть java, properties, xml-->
-    <property name="fileExtensions" value="java, properties, xml"/>
+    <property name="fileExtensions" balance="java, properties, xml"/>
 
     <!-- Checks for Size Violations.                    -->
     <!-- See http://checkstyle.sf.net/config_sizes.html -->
@@ -15,8 +15,8 @@
     <!-- Checks for Headers                                -->
     <!-- See http://checkstyle.sf.net/config_header.html   -->
     <!-- <module name="Header"> -->
-    <!--   <property name="headerFile" value="${checkstyle.header.file}"/> -->
-    <!--   <property name="fileExtensions" value="java"/> -->
+    <!--   <property name="headerFile" balance="${checkstyle.header.file}"/> -->
+    <!--   <property name="fileExtensions" balance="java"/> -->
     <!-- </module> -->
 
     <module name="TreeWalker">
@@ -29,7 +29,7 @@
         <module name="MemberName"/>
         <module name="MethodName"/>
         <module name="PackageName">
-            <property name="format" value="^[a-z]+(\.[a-z0-9]*)*$"/>
+            <property name="format" balance="^[a-z]+(\.[a-z0-9]*)*$"/>
         </module>
         <module name="ParameterName"/>
         <module name="StaticVariableName"/>

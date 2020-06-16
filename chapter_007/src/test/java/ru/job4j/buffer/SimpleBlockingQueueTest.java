@@ -2,7 +2,9 @@ package ru.job4j.buffer;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 
@@ -24,7 +26,7 @@ public class SimpleBlockingQueueTest {
         producer.start();
         Thread consumer = new Thread(
                 () -> {
-                    while (!queue.isEmpty() || !Thread.currentThread().isInterrupted()) {
+                    while (!(queue.isEmpty() && Thread.currentThread().isInterrupted())) {
                         try {
                             buffer.add(queue.poll());
                         } catch (InterruptedException e) {
@@ -38,6 +40,10 @@ public class SimpleBlockingQueueTest {
         producer.join();
         consumer.interrupt();
         consumer.join();
-        assertThat(buffer, is(Arrays.asList(0, 1, 2, 3, 4)));
+        List<Integer> expect = new ArrayList<>();
+        IntStream.range(0, 5).forEach(
+                expect::add
+        );
+        assertThat(buffer, is(expect));
     }
 }

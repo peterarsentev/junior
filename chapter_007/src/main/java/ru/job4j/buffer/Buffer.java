@@ -1,15 +1,15 @@
 package ru.job4j.buffer;
 
 public class Buffer {
-    private StringBuffer buffer = new StringBuffer();
+    private StringBuilder buffer = new StringBuilder();
 
-    public void add(int value) {
+    public synchronized void add(int value) {
         System.out.print(value);
-        this.buffer.append(value);
+        buffer.append(value);
     }
 
     @Override
-    public String toString() {
-        return this.buffer.toString();
+    public synchronized String toString() {
+        return buffer.toString();
     }
 }

@@ -20,8 +20,8 @@ public class TrackerCache implements ITracker {
     }
 
     @Override
-    public void replace(String id, Item item) {
-
+    public boolean replace(String id, Item item) {
+return true;
     }
 
     @Override

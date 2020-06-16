@@ -1,0 +1,31 @@
+{
+  "queue" : "weather",
+  "text" : "temperature +18 C"
+}
+
+{
+  "queue" : "weather",
+  "text" : "temperature +18 C"
+}
+
+{
+  "topic" : "weather",
+  "text" : "temperature +18 C"
+}
+
+{
+  "queue" : "weather",
+  "text" : "temperature +18 C"
+}
+
+{
+  "topic" : "weather",
+  "text" : "temperature +18 C"
+}
+
+{
+
+  "name" : "name",
+  "body" : "body"
+
+}

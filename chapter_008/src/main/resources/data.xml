@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <user>
     <values>
-        <value>1</value>
+        <balance>1</balance>
     </values>
     <values>
-        <value>2</value>
+        <balance>2</balance>
     </values>
 </user>

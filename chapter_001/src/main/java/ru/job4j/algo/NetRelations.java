@@ -9,23 +9,16 @@ public class NetRelations {
         Map<String, String> backward = new HashMap<>();
         int names = 0;
         for (List<String> group : data) {
-            String name = null;
+            String name = String.valueOf(names++);
             for (String el : group) {
                 if (backward.containsKey(el)) {
                     name = backward.get(el);
                     break;
                 }
             }
-            if (name != null) {
-                list.get(name).addAll(group);
-                for (String gr : group) {
-                    backward.put(gr, name);
-                }
-            } else {
-                name = String.valueOf(names++);
-                list.put(name, new HashSet<>());
-                list.get(name).addAll(group);
-            }
+            list.putIfAbsent(name, new HashSet<>());
+            Set<String> el = list.get(name);
+            el.addAll(group);
             for (String gr : group) {
                 backward.put(gr, name);
             }

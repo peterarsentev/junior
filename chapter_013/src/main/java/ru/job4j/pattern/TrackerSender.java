@@ -33,8 +33,8 @@ public class TrackerSender implements ITracker, Observe<Messenger<Item>> {
     }
 
     @Override
-    public void replace(String id, Item item) {
-
+    public boolean replace(String id, Item item) {
+        return true;
     }
 
     @Override

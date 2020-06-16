@@ -1,19 +1,37 @@
 package ru.job4j.lambda;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Group {
-    public static void main(String[] args) {
-        System.out.println("123;45;".split(";").length);
-        System.out.println(";11;".split(";").length);
-//        Map<String, Set<String>> users = new HashMap<>();
-//        users.put("Petr Arsentev", Set.of("p1@ya.ru", "p2@ya.ru"));
-//        users.put("Ivan Ivanov", Set.of("i1@ya.ru", "i2@ya.ru"));
 
-//        users.entrySet().stream().map().collect(Collectors.groupingBy((key, value) -> ()))
-}
+    static class Holder {
+        String key, value;
+
+        Holder(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+
+    public static Map<String, Set<String>> sections(List<Student> students) {
+        return students.stream().flatMap(
+                s -> s.getUnits().stream().map(u -> new Holder(u, s.getName()))
+        ).collect(
+                Collectors.groupingBy(t -> t.key,
+                        Collector.of(
+                                HashSet::new,
+                                (set, el) -> set.add(el.value),
+                                (left, right) -> { left.addAll(right); return left; }
+                        )
+                )
+        );
+    }
+
+    public static void main(String[] args) {
+        List<Student> students = List.of(new Student("Petr", Set.of("1", "2")), new Student("Ivan", Set.of("1", "2", "3")));
+        System.out.println(sections(students));
+    }
 }

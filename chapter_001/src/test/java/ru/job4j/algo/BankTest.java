@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 public class BankTest {
 
     @Test
-    public void whenOneVisit() {
+    public void WhenOneVisit() {
         List<Bank.Visit> visits = Arrays.asList(
                 new Bank.Visit(time(8, 10),  time(8, 20))
         );

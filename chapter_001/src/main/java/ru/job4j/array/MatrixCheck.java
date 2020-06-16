@@ -1,15 +1,45 @@
 package ru.job4j.array;
 
 public class MatrixCheck {
+    public static boolean monoHorizontal(char[][] board, int row) {
+        boolean result = true;
+//        for () {
+//            if () {
+//                result = false;
+//                break;
+//            }
+//        }
+        return result;
+    }
+
+    public static boolean monoVertical(char[][] board, int column) {
+        boolean result = true;
+//        for () {
+//            if () {
+//                result = false;
+//                break;
+//            }
+//        }
+        return result;
+    }
+
+    public static char[] extractDiagonal(char[][] board) {
+        char[] rsl = new char[board.length];
+//        for () {
+//            rsl[] = board[][];
+//        }
+        return rsl;
+    }
+
+
     public static boolean isWin(char[][] board) {
         boolean result = false;
-        for (int row = 0; row < board.length; row++) {
-            for (int cell = 0; cell < board.length; cell++) {
-                char sign = board[row][cell];
-                System.out.print(sign);
-                //for () { проверить последовательность.
+        for (int index = 0; index < board.length; index++) {
+            if (board[index][index] == 'X' &&
+                    (monoHorizontal(board, index) || monoVertical(board, index))) {
+                result = true;
+                break;
             }
-            System.out.println();
         }
         return result;
     }
